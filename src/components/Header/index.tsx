@@ -8,7 +8,7 @@ export function Header() {
 
       <button>
         <img src="/login.svg" alt="Login"/>
-        <p>Cadastre um ponto de coleta</p>
+        Cadastre um ponto de coleta
       </button>
     </header>
   )

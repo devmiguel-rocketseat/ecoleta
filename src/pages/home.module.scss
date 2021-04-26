@@ -1,4 +1,54 @@
 .homepage {
+  background: url("/vetor-branco.png") no-repeat bottom right;
+  
   padding: 0 4rem;
   height: calc(100vh - 6.5rem);
+  
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  section:first-child {
+    width: 37rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    span {
+      display: block;
+    
+      font-size: 1.3rem;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    button {
+      border: none;
+      width: 20rem;
+      height: 4.5rem;
+      
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: var(--green-500);
+      
+      border-radius: 10px;
+      overflow: hidden;
+
+      p {
+        color: var(--white);
+        margin-right: 2rem;
+      }
+
+      img {
+        background-color: var(--green-800);
+        padding: 1.5rem;  
+      }
+    }
+  }
 }
