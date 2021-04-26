@@ -1,0 +1,32 @@
+.headerContainer {
+  height: 6.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 2rem 4rem;
+
+  button {
+    display: flex;
+
+    border: none;
+    background: none;
+    align-items: center;
+    gap: 1rem;
+
+    p {
+      font-weight: bold;
+      font-size: 1.125rem;
+      color: var(--gray-800);
+
+      transition: 0.2s;
+    }
+
+    &:hover {
+      p {
+      color: var(--gray-500)
+    }
+    }
+  }
+}

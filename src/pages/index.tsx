@@ -1,5 +1,10 @@
+import styles from './Home.module.scss'
+
 export default function Home() {
   return (
-   <h1>Hellow Word</h1>
+   <div className={styles.homepage}>
+     <section></section>
+     <section></section>
+   </div>
   )
 }
