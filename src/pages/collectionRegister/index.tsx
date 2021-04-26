@@ -1,21 +1,12 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
 
-import headerStyle from '../../styles/header.module.scss'
+import { Header } from '../../components/Header'
 
 export default function collectionRegister() {
   return (
     <>
-      <header className={headerStyle.headerContainer}>
-      <img src="/logo.svg" alt="Ecoleta" />
-
-      <Link href="/">
-        <button>
-          <img src="/voltar.svg" alt="Login" />
-          Voltar para Home
-        </button>
-      </Link>
-    </header>
+      <Header title="Voltar para home" img="/voltar.svg" url="/"/>
 
       <div className={styles.containerCadastro}>
         <h1>Cadastro do ponto de coleta</h1>

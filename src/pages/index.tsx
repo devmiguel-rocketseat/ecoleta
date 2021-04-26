@@ -1,21 +1,12 @@
 import Link from 'next/link'
 import styles from './Home.module.scss'
 
-import headerStyle from '../styles/header.module.scss'
+import { Header } from '../components/Header'
 
 export default function Home() {
   return (
     <>
-      <header className={headerStyle.headerContainer}>
-        <img src="/logo.svg" alt="Ecoleta" />
-
-        <Link href="/collectionRegister">
-          <button>
-            <img src="/login.svg" alt="Login" />
-            Cadastre um ponto de coleta
-        </button>
-        </Link>
-      </header>
+      <Header title="Cadastre um ponto de coleta" img="/Login.svg" url="/collectionRegister"/>
 
       <div className={styles.homepage}>
         <section>
