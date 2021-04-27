@@ -14,7 +14,7 @@ export default function Home() {
 
           <span>Ajudamos pessoas a encontrarem pontos <br /> de coleta de forma eficiente.</span>
 
-          <Link href="">
+          <Link href="/collectPoint">
             <button>
               <img src="/buscar.svg" alt="Buscar" />
               
