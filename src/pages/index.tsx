@@ -17,6 +17,7 @@ export default function Home() {
           <Link href="">
             <button>
               <img src="/buscar.svg" alt="Buscar" />
+              
               <p>Pesquisar pontos de coleta</p>
             </button>
           </Link>
