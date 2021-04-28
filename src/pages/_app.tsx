@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
     const array = storage.get()
     return array
   })
-  
+
   useEffect(() => {
     storage.set(arrayForm)
   }, [arrayForm])
@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
   return (
       <div className={styles.wrapper}>
         <main>
-          <Component {...pageProps} addRegister={addRegister} />
+          <Component {...pageProps} addRegister={addRegister} arrayForm={arrayForm}/>
         </main>
       </div>
   )

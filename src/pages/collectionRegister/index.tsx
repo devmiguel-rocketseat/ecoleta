@@ -1,20 +1,14 @@
 import styles from './styles.module.scss'
 
 import { Header } from '../../components/Header'
-import { FormEvent, useState } from 'react'
-
-interface Item {
-  id: number
-  title: string
-  image_url: string
-}
+import { useState } from 'react'
+import Swal from 'sweetalert2'
 
 interface addRegisterProps {
   addRegister: any
 }
 
 export default function collectionRegister({ addRegister }: addRegisterProps) {
-  //const [items, setItems] = useState<Item[]>([])
   const [selectedItems, setSelectedItems] = useState('')
   const [nameE, setNameE] = useState('')
   const [adress, setAdress] = useState('')
@@ -23,12 +17,12 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
   const [state, setState] = useState('')
 
   const data = [
-    { id: 1, name: "Lâmpadas", value:"lampadas", img: "./cards/lampadas.svg" },
-    { id: 2, name: "Pilhas e Baterias", value:"baterias", img: "./cards/baterias.svg" },
-    { id: 3, name: "Papéis e Papelão", value:"papeis", img: "./cards/papeis.svg" },
-    { id: 4, name: "Resíduos Eletrônicos", value:"eletronicos", img: "./cards/eletronicos.svg" },
-    { id: 5, name: "Resíduos Orgânicos", value:"organicos", img: "./cards/organicos.svg" },
-    { id: 6, name: "Óleo de Cozinha", value:"oleo", img: "./cards/oleo.svg" }
+    { id: 1, name: "Lâmpadas", value: "lampadas", img: "./cards/lampadas.svg" },
+    { id: 2, name: "Pilhas e Baterias", value: "baterias", img: "./cards/baterias.svg" },
+    { id: 3, name: "Papéis e Papelão", value: "papeis", img: "./cards/papeis.svg" },
+    { id: 4, name: "Resíduos Eletrônicos", value: "eletronicos", img: "./cards/eletronicos.svg" },
+    { id: 5, name: "Resíduos Orgânicos", value: "organicos", img: "./cards/organicos.svg" },
+    { id: 6, name: "Óleo de Cozinha", value: "oleo", img: "./cards/oleo.svg" }
   ]
 
   const handleSubmit = (e) => {
@@ -130,8 +124,15 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
           <div className={styles.buttonContainer}>
             <p></p>
 
-            <button type="submit">
-              Cadastrar ponto de coleta
+              <button type="submit"
+                onClick={() => Swal.fire({
+                  icon: 'success',
+                  title: 'Boa!',
+                  text: 'Ponto de coleta cadastrado com successo!',
+                  confirmButtonText:"Continuar cadastrando",
+                  footer: '<a href="/">Voltar a home</a>'
+                })}>
+                Cadastrar ponto de coleta
             </button>
           </div>
         </form>
