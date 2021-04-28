@@ -15,22 +15,21 @@ interface addRegisterProps {
 
 export default function collectionRegister({ addRegister }: addRegisterProps) {
   //const [items, setItems] = useState<Item[]>([])
-  const [selectedItems, setSelectedItems] = useState<number[]>([])
+  const [selectedItems, setSelectedItems] = useState('')
   const [nameE, setNameE] = useState('')
   const [adress, setAdress] = useState('')
   const [number, setNumber] = useState('')
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
 
-  const handleNameE = (e) => setNameE(e.target.value)
-
-  const handleAdress = (e) => setAdress(e.target.value)
-
-  const handleNumber = (e) => setNumber(e.target.value)
-
-  const handleCity = (e) => setCity(e.target.value)
-
-  const handleState = (e) => setState(e.target.value)
+  const data = [
+    { id: 1, name: "Lâmpadas", value:"lampadas", img: "./cards/lampadas.svg" },
+    { id: 2, name: "Pilhas e Baterias", value:"baterias", img: "./cards/baterias.svg" },
+    { id: 3, name: "Papéis e Papelão", value:"papeis", img: "./cards/papeis.svg" },
+    { id: 4, name: "Resíduos Eletrônicos", value:"eletronicos", img: "./cards/eletronicos.svg" },
+    { id: 5, name: "Resíduos Orgânicos", value:"organicos", img: "./cards/organicos.svg" },
+    { id: 6, name: "Óleo de Cozinha", value:"oleo", img: "./cards/oleo.svg" }
+  ]
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -41,23 +40,12 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
       adress,
       number,
       city,
-      state
+      state,
+      selectedItems
     }
 
     addRegister(objRegister)
   }
-
-
-  // function handleSelectItem(id: number) {
-  //   const alreadSelected = selectedItems.findIndex(item => item === id)
-
-  //   if (alreadSelected >= 0) {
-  //     const filteredItems = selectedItems.filter(item => item !== id)
-  //     setSelectedItems(filteredItems)
-  //   } else {
-  //     setSelectedItems([ ...selectedItems, id])
-  //   }
-  // }]
 
   return (
     <>
@@ -72,85 +60,70 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
           <section className={styles.inputContainer}>
             <div className={styles.input}>
               <label>Nome da entidade</label>
-              <input id="" type="text" value={nameE} onChange={handleNameE} />
+
+              <input
+                type="text"
+                value={nameE}
+                onChange={(e) => setNameE(e.target.value)} />
             </div>
 
             <div className={styles.input}>
               <label>Endereço</label>
-              <input type="text" value={adress} onChange={handleAdress} />
+
+              <input
+                type="text"
+                value={adress}
+                onChange={(e) => setAdress(e.target.value)} />
             </div>
 
             <div className={styles.input}>
               <label>Número</label>
-              <input id="" type="text" value={number} onChange={handleNumber} />
+
+              <input
+                type="number"
+                value={number}
+                onChange={(e) =>
+                  setNumber(e.target.value)} />
             </div>
 
             <div className={styles.input}>
               <label>Cidade</label>
-              <input id="" type="text" value={city} onChange={handleCity} />
+
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)} />
             </div>
 
             <div className={styles.input}>
               <label>Estado</label>
-              <input id="" type="text" value={state} onChange={handleState} />
+
+              <input
+                type="text"
+                value={state}
+                onChange={(e) => setState(e.target.value)} />
             </div>
           </section>
 
           <section className={styles.itensContainer}>
             <div>
               <h2>Ítens de coleta</h2>
+
               <span>Selecione um ou mais ítens abaixo</span>
             </div>
 
             <ul>
-              <li
-                key=""
-              // onClick={() => handleSelectItem(id)}
-              // className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src="./cards/lampadas.svg" alt="" />
-                <span>Lâmpadas</span>
-              </li>
-              <li
-                key=""
-              // onClick={() => handleSelectItem(id)}
-              // className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src="./cards/baterias.svg" alt="" />
-                <span>Pilhas e Baterias</span>
-              </li>
-              <li
-                key=""
-              // onClick={() => handleSelectItem(id)}
-              // className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src="./cards/papeis.svg" alt="" />
-                <span>Papéis e Papelão</span>
-              </li>
-              <li
-                key=""
-              // onClick={() => handleSelectItem(id)}
-              // className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src="./cards/eletronicos.svg" alt="" />
-                <span>Resíduos Eletrônicos</span>
-              </li>
-              <li
-                key=""
-              // onClick={() => handleSelectItem(id)}
-              // className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src="./cards/organicos.svg" alt="" />
-                <span>Resíduos Orgânicos</span>
-              </li>
-              <li
-                key=""
-              // onClick={() => handleSelectItem(id)}
-              // className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src="./cards/oleo.svg" alt="" />
-                <span>Óleo de Cozinha</span>
-              </li>
+              {data.map(item => (
+                <li
+                  key={item.id}
+                  value={item.value}
+                  onClick={() => setSelectedItems(item.value)}
+                  className={item.value === selectedItems ? styles.selected : ''}
+                >
+                  <img src={item.img} alt={item.name} />
+                  <span>{item.name}</span>
+                </li>
+              ))}
             </ul>
           </section>
 
@@ -159,7 +132,7 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
 
             <button type="submit">
               Cadastrar ponto de coleta
-          </button>
+            </button>
           </div>
         </form>
       </div>

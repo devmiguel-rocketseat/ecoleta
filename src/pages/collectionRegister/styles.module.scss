@@ -91,6 +91,11 @@
 
           background-color: var(--green-50);
           cursor: pointer;
+
+          &.selected {
+            background: linear-gradient(0deg, var(--green-50) 0%, var(--white) 100%);
+            border: 2px solid var(--green-800);
+          }
         }
       }
     }
