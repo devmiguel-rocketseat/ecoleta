@@ -9,7 +9,7 @@ interface addRegisterProps {
 }
 
 export default function collectionRegister({ addRegister }: addRegisterProps) {
-  const [selectedItems, setSelectedItems] = useState('')
+  const [selectedItems, setSelectedItems] = useState([])
   const [nameE, setNameE] = useState('')
   const [adress, setAdress] = useState('')
   const [number, setNumber] = useState('')
@@ -77,7 +77,8 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
                 type="number"
                 value={number}
                 onChange={(e) =>
-                  setNumber(e.target.value)} />
+                  setNumber(e.target.value)}
+              />
             </div>
 
             <div className={styles.input}>
@@ -111,8 +112,12 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
                 <li
                   key={item.id}
                   value={item.value}
-                  onClick={() => setSelectedItems(item.value)}
-                  className={item.value === selectedItems ? styles.selected : ''}
+                  onClick={() => {
+                    const include = selectedItems.includes(item.value)
+                    if (include) setSelectedItems(oldValue => oldValue.filter(stringName => stringName !== item.value))
+                    else setSelectedItems(oldValue => [...oldValue, item.value])
+                  }}
+                  className={selectedItems.includes(item.value) ? styles.selected : ''}
                 >
                   <img src={item.img} alt={item.name} />
                   <span>{item.name}</span>
@@ -124,15 +129,15 @@ export default function collectionRegister({ addRegister }: addRegisterProps) {
           <div className={styles.buttonContainer}>
             <p></p>
 
-              <button type="submit"
-                onClick={() => Swal.fire({
-                  icon: 'success',
-                  title: 'Boa!',
-                  text: 'Ponto de coleta cadastrado com successo!',
-                  confirmButtonText:"Continuar cadastrando",
-                  footer: '<a href="/">Voltar a home</a>'
-                })}>
-                Cadastrar ponto de coleta
+            <button type="submit"
+              onClick={() => Swal.fire({
+                icon: 'success',
+                title: 'Boa!',
+                text: 'Ponto de coleta cadastrado com successo!',
+                confirmButtonText: "Continuar cadastrando",
+                footer: '<a href="/">Voltar a home</a>'
+              })}>
+              Cadastrar ponto de coleta
             </button>
           </div>
         </form>

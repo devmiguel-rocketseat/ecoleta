@@ -1,7 +1,7 @@
 const storage = {
   get() {
     if (typeof window !== 'undefined') {
-      const formulario = localStorage.getItem("finances.react")
+      const formulario = localStorage.getItem("formulario.react")
       return JSON.parse(formulario) || []
     }
   },
